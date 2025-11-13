@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  /* --color-primary: #ffff;
+  --color-secondary: #ffff; */
+}
+
+a.active {
+  @apply bg-linear-to-br from-[#e6e6bb] to-[#edfaf2] text-[#7d4762] font-medium px-3 py-1;
+}
