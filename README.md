@@ -18,7 +18,7 @@ Users can share their food experiences, post reviews with photos, and discover w
 ---
 
 ## Tech Stack
-**Frontend:** React, React Router, Tailwind CSS
+**Frontend:** React, React Router, Tailwind CSS  
 **Backend:** Node.js, Express.js  
 **Database:** MongoDB (Atlas)  
 **Authentication & Hosting:** Firebase Authentication, Firebase Hosting  
