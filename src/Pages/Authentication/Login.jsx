@@ -44,7 +44,7 @@ const Login = () => {
                     photo: user.photoURL,
                 };
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://local-food-lovers-server-liard.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

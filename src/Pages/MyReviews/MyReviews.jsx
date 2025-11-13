@@ -12,7 +12,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-reviews?email=${user.email}`)
+      fetch(`https://local-food-lovers-server-liard.vercel.app/my-reviews?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setReviews(data));
     }
@@ -24,7 +24,7 @@ const MyReviews = () => {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3000/my-reviews/${selectedId}`, {
+    fetch(`https://local-food-lovers-server-liard.vercel.app/my-reviews/${selectedId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

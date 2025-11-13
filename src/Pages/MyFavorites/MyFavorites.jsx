@@ -8,7 +8,7 @@ const MyFavorites = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/favorites?email=${user.email}`)
+            fetch(`https://local-food-lovers-server-liard.vercel.app/favorites?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => setFavorites(data))
                 .catch(err => console.error(err));
@@ -16,7 +16,7 @@ const MyFavorites = () => {
     }, [user]);
 
     const handleDelete = id => {
-        fetch(`http://localhost:3000/favorites/${id}`, {
+        fetch(`https://local-food-lovers-server-liard.vercel.app/favorites/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

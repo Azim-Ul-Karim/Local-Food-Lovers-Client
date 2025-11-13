@@ -17,7 +17,7 @@ const EditReview = () => {
     const [hover, setHover] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/reviews/${id}`)
+        fetch(`https://local-food-lovers-server-liard.vercel.app/reviews/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setFormData({
@@ -40,7 +40,7 @@ const EditReview = () => {
         e.preventDefault();
         const updated = { ...formData, rating };
 
-        fetch(`http://localhost:3000/my-reviews/${id}`, {
+        fetch(`https://local-food-lovers-server-liard.vercel.app/my-reviews/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"

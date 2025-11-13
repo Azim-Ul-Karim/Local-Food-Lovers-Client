@@ -62,7 +62,7 @@ const Register = () => {
                             photo: photo
                         }
 
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://local-food-lovers-server-liard.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ const Register = () => {
                     email: user.email,
                     photo: user.photoURL
                 }
-                fetch('http://localhost:3000/users', {
+                fetch('https://local-food-lovers-server-liard.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

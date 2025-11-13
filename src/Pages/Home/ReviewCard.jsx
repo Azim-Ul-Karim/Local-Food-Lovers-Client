@@ -27,7 +27,7 @@ const ReviewCard = ({ review }) => {
             addedAt: new Date()
         };
 
-        fetch('http://localhost:3000/favorites', {
+        fetch('https://local-food-lovers-server-liard.vercel.app/favorites', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(favoriteData)

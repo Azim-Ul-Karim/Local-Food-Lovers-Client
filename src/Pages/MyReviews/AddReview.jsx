@@ -41,7 +41,7 @@ const AddReview = () => {
       dateAdded: new Date().toISOString(),
     };
 
-    fetch('http://localhost:3000/reviews', {
+    fetch('https://local-food-lovers-server-liard.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
