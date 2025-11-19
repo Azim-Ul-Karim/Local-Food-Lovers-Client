@@ -1,6 +1,8 @@
 
 # Local Food Lovers Network
 
+---
+
 **Local Food Lovers Network** is a community-driven MERN single-page application that connects food lovers who enjoy exploring local restaurants, street food, and homemade meals.  
 Users can share their food experiences, post reviews with photos, and discover what others are enjoying nearby — building a network of honest food enthusiasts celebrating local flavor.
 ## Features
