@@ -74,6 +74,6 @@ npm i
 ```
 npm run dev
 ```
-## Vist Here: 
+## Visit Here: 
 https://local-food--lovers--network.web.app/
 
