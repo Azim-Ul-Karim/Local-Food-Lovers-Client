@@ -99,6 +99,106 @@ const Home = () => {
                 </div>
             </section>
 
+            <section className="my-16">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Why Choose Us?</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+                        🍽️ Authentic Reviews
+                    </div>
+                    <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+                        ⭐ Trusted Ratings
+                    </div>
+                    <div className="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+                        ❤️ Favorite Your Best Picks
+                    </div>
+                </div>
+            </section>
+
+            <section className="my-16 bg-base-100">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">What Food Lovers Say</h2>
+                <div className="grid md:grid-cols-3 gap-6">
+                    <div className="p-5 shadow-lg rounded bg-green-50">“Amazing platform!”</div>
+                    <div className="p-5 shadow-lg rounded bg-green-50">“Found my favorite restaurant.”</div>
+                    <div className="p-5 shadow-lg rounded bg-green-50">“Love the reviews system.”</div>
+                </div>
+            </section>
+
+            <section className="my-16 bg-[#f5f0d1] py-10 rounded-xl text-center">
+                <h2 className="text-2xl font-bold mb-4">Subscribe for Food Updates</h2>
+                <input type="email" placeholder="Your email" className="input input-bordered" />
+                <button className="btn bg-[#d7d3af] ml-2">Subscribe</button>
+            </section>
+
+            <section className="my-16 text-center bg-[#f8faf0] py-12 rounded-xl">
+                <h2 className="text-3xl font-bold mb-7">Ready to Explore Local Foods?</h2>
+                <Link to="/all-reviews" className="btn bg-[#decdad]">Explore Reviews</Link>
+            </section>
+
+            <section className="my-16">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+                    Frequently Asked Questions
+                </h2>
+
+                <div className="max-w-3xl mx-auto space-y-4">
+                    <div className="collapse collapse-arrow bg-base-100 shadow">
+                        <input type="checkbox" />
+                        <div className="collapse-title font-semibold">
+                            Is Local Food Lovers free to use?
+                        </div>
+                        <div className="collapse-content">
+                            <p>Yes, users can explore and read reviews completely free.</p>
+                        </div>
+                    </div>
+
+                    <div className="collapse collapse-arrow bg-base-100 shadow">
+                        <input type="checkbox" />
+                        <div className="collapse-title font-semibold">
+                            Can I add my own food reviews?
+                        </div>
+                        <div className="collapse-content">
+                            <p>Yes, registered users can add and manage their reviews.</p>
+                        </div>
+                    </div>
+
+                    <div className="collapse collapse-arrow bg-base-100 shadow">
+                        <input type="checkbox" />
+                        <div className="collapse-title font-semibold">
+                            How does favorite system work?
+                        </div>
+                        <div className="collapse-content">
+                            <p>You can save any food review to your favorites list.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="my-16 bg-base-200 py-12 rounded-xl p-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+                    How Local Food Lovers Works
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h3 className="text-xl font-bold mb-2">Register</h3>
+                        <p>Create an account to join our food lover community.</p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h3 className="text-xl font-bold mb-2">Explore</h3>
+                        <p>Browse foods and restaurants reviewed by users.</p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h3 className="text-xl font-bold mb-2">Review</h3>
+                        <p>Share your own food experience and ratings.</p>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h3 className="text-xl font-bold mb-2">Favorite</h3>
+                        <p>Save your favorite foods for quick access.</p>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

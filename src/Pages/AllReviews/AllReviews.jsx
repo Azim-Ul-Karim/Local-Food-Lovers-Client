@@ -3,74 +3,113 @@ import ReviewCard from '../Home/ReviewCard';
 
 const AllReviews = () => {
 
-    const [reviews, setReviews] = useState([]);
+    const [allReviews, setAllReviews] = useState([]);
+    const [filteredReviews, setFilteredReviews] = useState([]);
     const [search, setSearch] = useState('');
+    const [rating, setRating] = useState('');
+    const [sort, setSort] = useState('');
     const [loading, setLoading] = useState(false);
-
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        const value = e.target.search.value.trim();
-        setLoading(true);
-
-        try {
-            const res = await fetch(`https://local-food-lovers-server-liard.vercel.app/reviews?search=${value}`);
-            const data = await res.json();
-            setReviews(data);
-            setSearch(value);
-        } catch (error) {
-            console.error('Search failed:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     useEffect(() => {
         setLoading(true);
         fetch('https://local-food-lovers-server-liard.vercel.app/reviews')
             .then(res => res.json())
-            .then(data => setReviews(data))
+            .then(data => {
+                setAllReviews(data);
+                setFilteredReviews(data);
+            })
             .finally(() => setLoading(false));
     }, []);
 
+    useEffect(() => {
+        let data = [...allReviews];
+
+        // Search
+        if (search) {
+            data = data.filter(r =>
+                r.foodName.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+
+        // Rating filter
+        if (rating) {
+            data = data.filter(r => Math.round(r.rating) >= rating);
+        }
+
+        // Sorting
+        if (sort === 'newest') {
+            data.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+        }
+        if (sort === 'oldest') {
+            data.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+        }
+        if (sort === 'rating') {
+            data.sort((a, b) => b.rating - a.rating);
+        }
+
+        setFilteredReviews(data);
+    }, [search, rating, sort, allReviews]);
+
     return (
-        <div className='w-11/12 mx-auto my-10'>
+        <div className="w-11/12 mx-auto my-10">
 
-            <title>All Reviews | Local Food Lovers Network</title>
+            <title>Explore Reviews | Local Food Lovers</title>
 
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#5f756a]">
-                All Reviews
+            <h2 className="text-3xl font-bold text-center mb-10 text-[#5f756a]">
+                Explore All Reviews
             </h2>
 
-            <form
-                onSubmit={handleSearch}
-                className="flex flex-col md:flex-row items-center justify-center gap-3 my-12"
-            >
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Search by food name..."
-                    className="input w-full md:w-1/2 px-4 py-2 rounded-md focus:outline-none"
-                />
-                <button
-                    type="submit"
-                    className="bg-[#76a086] text-white px-6 py-2 rounded-md cursor-pointer font-semibold"
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+
+                {/* Search */}
+                <div className='col-span-2'>
+                    <input
+                        type="text"
+                        placeholder="Search by food name..."
+                        className="input input-bordered w-full"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
+
+                {/* Rating Filter */}
+                <select
+                    className="select select-bordered"
+                    value={rating}
+                    onChange={(e) => setRating(e.target.value)}
                 >
-                    Search
-                </button>
-            </form>
+                    <option value="">Any Rating</option>
+                    <option value="5">5⭐</option>
+                    <option value="4">4⭐ & above</option>
+                    <option value="3">3⭐ & above</option>
+                </select>
 
-            {/* Loader */}
-            {loading && <p className="text-center text-gray-500">Loading reviews...</p>}
+                {/* Sorting */}
+                <select
+                    className="select select-bordered"
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                >
+                    <option value="">Sort By</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="rating">Highest Rating</option>
+                </select>
+            </div>
 
-            {/* No results */}
-            {!loading && reviews.length === 0 && (
-                <p className="text-center text-gray-500">No reviews found for “{search}”.</p>
+            {loading && (
+                <p className="text-center text-gray-500">Loading reviews...</p>
             )}
 
-            {/* Grid */}
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-                {reviews.map(review => (
-                    <ReviewCard key={review._id} review={review}></ReviewCard>
+            {!loading && filteredReviews.length === 0 && (
+                <p className="text-center text-gray-500">
+                    No reviews found.
+                </p>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {filteredReviews.map(review => (
+                    <ReviewCard key={review._id} review={review} />
                 ))}
             </div>
         </div>

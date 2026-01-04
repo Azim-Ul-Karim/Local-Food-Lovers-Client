@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         Component: Root,
-        errorElement: PathError,
+        errorElement: <PathError />,
         children: [
             {
                 index: true,
@@ -30,11 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: 'review-details/:id',
                 loader: ({ params }) => fetch(`https://local-food-lovers-server-liard.vercel.app/reviews/${params.id}`),
-                element: (
-                    <PrivateRoute>
-                        <ReviewDetails></ReviewDetails>
-                    </PrivateRoute>
-                )
+                element: <ReviewDetails></ReviewDetails>
             },
             {
                 path: 'my-reviews',
@@ -53,7 +49,7 @@ export const router = createBrowserRouter([
                 )
             },
             {
-                path:'edit-review/:id',
+                path: 'edit-review/:id',
                 element: (
                     <PrivateRoute>
                         <EditReview></EditReview>
