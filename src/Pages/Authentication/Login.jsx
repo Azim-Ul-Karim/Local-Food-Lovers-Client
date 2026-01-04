@@ -8,12 +8,18 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
     const { loginUser, setUser, googleUser } = useContext(AuthContext);
-    
+
     const location = useLocation();
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const DEMO_USER = {
+        email: 'ami@tumi.iu',
+        password: 'Amitumi@1',
+    };
 
     const handleLogin = e => {
         e.preventDefault();
@@ -65,6 +71,12 @@ const Login = () => {
             });
     };
 
+    const handleDemoLogin = () => {
+        setEmail(DEMO_USER.email);
+        setPassword(DEMO_USER.password);
+        toast.info('Demo credentials filled!');
+    };
+
     return (
         <div className="flex justify-center items-center">
 
@@ -89,7 +101,7 @@ const Login = () => {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none"
-                            placeholder="Enter your email address"
+                            placeholder="Enter your email address" required
                         />
 
                         <label className="label mt-2 text-sm text-[#52057b] font-semibold">
@@ -99,6 +111,8 @@ const Login = () => {
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 name="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                                 className="input bg-base-100 w-full border-0 shadow-sm text-sm focus:outline-none pr-3"
                                 placeholder="Enter your password"
                             />
@@ -137,6 +151,14 @@ const Login = () => {
                     >
                         <FcGoogle size={18} />
                         Continue with Google
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={handleDemoLogin}
+                        className="btn w-full mt-2"
+                    >
+                        Demo User Login
                     </button>
 
                     <p className="mt-2.5 text-sm">
